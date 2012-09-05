@@ -26,7 +26,7 @@ class UwmadisonEventsWidget extends WP_Widget {
 
     // Build the form
     echo $this->generateInput('title', 'Title:', $title);
-    echo $this->generateInput('url', 'Url:', $url);
+    echo $this->generateInput('url', 'Url: <span class="description">(Example: http://www.today.wisc.edu/events/feed/162)</span>', $url);
     echo $this->generateInput('limit', 'Limit:', $limit);
     echo $this->generateCheckbox('grouped', 'Group results:', $grouped);
 
@@ -64,7 +64,8 @@ class UwmadisonEventsWidget extends WP_Widget {
       $out .= $parsed;
     }
     else {
-      $out .= "<h2>Error</h2>";
+      $out .= "<h2 style=\"color: red;\">Unable to parse the events url:</h2><p style=\"color:red;\">" .esc_html($instance['url']) .
+        "</p><p>Please add a valid feed URL to the UW Events Widget, i.e. http://today.wisc.edu/events/tag/arts, or http://www.today.wisc.edu/events/feed/162</p>";
     }
     $out .= '</aside>';
     print $out;
