@@ -253,9 +253,13 @@ class UwmadisonEvents {
         'subtitle' => $event->subtitle,
         'type' => $event->eventtype_id,
         'description' => $event->description,
+        'cost' => $event->cost,
+        'contact_phone' => $event->phone,
+        'contact_email' => $event->email,
         'formatted_dates' => $this->parseDateFormats($start_unix),
         'start_timestamp' => $start_unix,
         'end_timestamp' => $end_unix,
+        'all_day_event' => $event->allDayEvent,
         'link' => $this->eventLink($event),
         'narrative_listing' => $event->narrative_listing,
       );
