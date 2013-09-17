@@ -41,24 +41,24 @@ These are all strftime formatted strings which can be overriden with the uwmadis
 
 Example:
 
-  /**
-   * Filter the UW-Madison Events date formats
-   */
-  function my_uw_events_date_formats($date_formats) {
-    // Change the default time beside each event
-    $date_formats['default'] = '%D (day of week: %a)';
+	/**
+	 * Filter the UW-Madison Events date formats
+	 */
+	function my_uw_events_date_formats($date_formats) {
+		// Change the default time beside each event
+		$date_formats['default'] = '%D (day of week: %a)';
 
-    // Add a custom time format, made available in the $event
-    // object passed to other filters
-    $date_formats['my_time'] = 'My Time %F';
+		// Add a custom time format, made available in the $event
+		// object passed to other filters
+		$date_formats['my_time'] = 'My Time %F';
 
-    // Custom header format for each group of events
-    // in the grouped event view
-    $date_formats['group_header'] = 'On - %a';
+		// Custom header format for each group of events
+		// in the grouped event view
+		$date_formats['group_header'] = 'On - %a';
 
-    return $date_formats;
-  }
-  add_filter('uwmadison_events_date_formats', 'my_uw_events_date_formats');
+		return $date_formats;
+	}
+	add_filter('uwmadison_events_date_formats', 'my_uw_events_date_formats');
 
 #### uwmadison_events_event_html filter
 
@@ -66,20 +66,24 @@ The uwmadison_events_html filter allows you to customize the content of each eve
 
 Example:
 
-    /**
-     * Customise the events html for the <li> or each event
-     */
-    function my_uwmadison_events_html($html, $event, $opts) {
-      $my_event_html = 'Just the title ' . $event->title;
-      return $my_event_html;
-    }
-    // When registering this filter, we must tell it we're receiving 3 arguments
-    // if we want access to the $event object and options
-    add_filter('uwmadison_events_event_html', 'my_uwmadison_events_html', 10, 3);
+		/**
+		 * Customise the events html for the <li> or each event
+		 */
+		function my_uwmadison_events_html($html, $event, $opts) {
+			$my_event_html = 'Just the title ' . $event->title;
+			return $my_event_html;
+		}
+		// When registering this filter, we must tell it we're receiving 3 arguments
+		// if we want access to the $event object and options
+		add_filter('uwmadison_events_event_html', 'my_uwmadison_events_html', 10, 3);
 
 ### Change log
 
-#### 1.1.2 (Sept. 3, 2013)
+#### 1.1.2 (Sept. 17, 2013)
+
+* Default date formats check for Windows to swap out windows compatible strftime strings.
+
+#### 1.1.1 (Sept. 3, 2013)
 
 * Removes type from output since it is not passed in today.wisc.edu JSON
 
